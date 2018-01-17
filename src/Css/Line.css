@@ -1,0 +1,47 @@
+img {
+  height: 30px;
+  width: 25px;
+}
+
+
+li {
+  display: inline-block;
+
+}
+
+li.heading {
+  margin-left: 100px;
+}
+
+li.item {
+
+  margin-left: 20px;
+  width: 100px;
+}
+
+li.items {
+
+  margin-left: 20px;
+  width: 100px;
+}
+
+li.quantity {
+  width: 100px;
+  margin-left: 80px;
+
+}
+
+li.quantities {
+  width: 100px;
+  margin-left: 80px;
+}
+
+li.del {
+  padding-left: 50px;
+
+}
+
+li.dels {
+  padding-left: 50px;
+
+}

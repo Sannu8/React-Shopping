@@ -1,0 +1,27 @@
+/*To Add Table */
+#ToAdd {
+  background: linear-gradient(to bottom right, white, lightgrey);
+}
+
+/*Added Table */
+#Added {
+  background: linear-gradient(to bottom right, white, lightgrey);
+}
+
+#mainAddedUl {
+  text-decoration: line-through;
+  display: none;
+}
+
+ul.sub {
+  margin-top: 2px;
+  background-color:  #86b300;
+  display: flex;
+  color: #994d00;
+
+}
+
+ul.sub:hover {
+  box-shadow: 2px 2px grey;
+  background-color: #88cc00;
+}
