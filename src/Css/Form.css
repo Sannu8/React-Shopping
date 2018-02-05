@@ -11,3 +11,8 @@
   font-size: 16px;
   box-shadow: 2px 2px grey;
 }
+
+@media (max-width: 800px) {
+  #item, #quantity {width:120px;}
+  th {font-size: 20px;}
+}
