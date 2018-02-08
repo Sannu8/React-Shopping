@@ -4,10 +4,9 @@ import './Css/App.css';
 import Header from './Header.js';
 import Form from './Form.js';
 import BodyData from './BodyData.js';
-import Line from './Line.js';
+
 
 import logo from './Images/logo.png';
-
 
 
 class App extends Component {
@@ -19,50 +18,38 @@ class App extends Component {
       itemArray : ['Chicken','Pork','Milk','Cheese','Spinach'],
       amountArray : ['2kg','1kg','1l','500g','2kg'],
       addedItemArray : [],
-      addedAmountArray : []
-
-
-
+      addedAmountArray : [],
     };
     this.handleAdd = this.handleAdd.bind(this);
   }
 
 
-  handleAdd(item, amount){
-      //console.log(item, amount);
+    handleAdd(item, amount){
 
         const newItemArray = Object.assign([], this.state.itemArray).concat(item);
         const newAmountArray = Object.assign([], this.state.amountArray).concat(amount);
-        //console.log(newItemArray, newAmountArray);
 
         this.setState({
           itemArray: newItemArray,
           amountArray : newAmountArray,
           item: '',
           amount: ''
-
-                  })
+        })
       }
 
       handleDelete = (index, id) => {
-        console.log('index', index);
-        console.log('id', id);
-        //console.log(itemName, amount, id);
-
+        console.log('index: ' + index);
+        console.log('id: ' + id);
         if (id === 'mainUl') {
-          //const index = this.state.itemArray.indexOf(itemName);
 
-          console.log(index);
+
           const newItemArray = Object.assign([], this.state.itemArray).filter((item, i) => i!==index);
           const newAmountArray = Object.assign([], this.state.amountArray).filter((item, i) => i!==index);
 
-
         this.setState({
           itemArray : newItemArray,
-          amountArray : newAmountArray
+          amountArray : newAmountArray})
 
-        })
-        //console.log(newItemArray);
       }
 
         else if (id === 'mainAddedUl') {
@@ -73,52 +60,52 @@ class App extends Component {
 
           addedItemArray : newAddedItemArray,
           addedAmountArray : newAddedAmountArray
-
         })
         }
-
-
       }
 
-      handleCheck = (item, amount, id) => {
-
-
-        console.log(item, amount, id );
+      handleCheck = (index, id, item, amount) => {
+        console.log('index: ' + index);
+        console.log('item: ' + item);
+        console.log('amount' + amount);
+        console.log('id' + id);
 
         if (id=== 'mainUl') {
 
-        const newAddedItemArray = Object.assign([], this.state.addedItemArray).concat(item);
+          const newAddedItemArray = Object.assign([], this.state.addedItemArray).concat(item);
         const newAddedAmountArray = Object.assign([], this.state.addedAmountArray).concat(amount);
-        const newItemArray = Object.assign([], this.state.itemArray).filter(e => e!==item);
-        const newAmountArray = Object.assign([], this.state.amountArray).filter(e => e!==amount);
 
-        console.log(newAddedItemArray, newAddedAmountArray);
+      //  const newItemArray = Object.assign([], this.state.itemArray).filter(e => e!==item);
+      //  const newAmountArray = Object.assign([], this.state.amountArray).filter(e => e!==amount);
+      const newItemArray = Object.assign([], this.state.itemArray).filter((item, i) => i!==index);
+      const newAmountArray = Object.assign([], this.state.amountArray).filter((item, i) => i!==index);
+
+
         this.setState ({
           addedItemArray : newAddedItemArray,
           addedAmountArray : newAddedAmountArray,
           itemArray: newItemArray,
-          amountArray : newAmountArray
+          amountArray : newAmountArray,
         })
       }
 
       else if (id === 'mainAddedUl') {
-        console.log('mainAddedUl');
 
-        const newAddedItemArray = Object.assign([], this.state.addedItemArray).filter(e => e!==item);
+const newAddedItemArray = Object.assign([], this.state.addedItemArray).filter((item, i) => i!==index);
+  const newAddedAmountArray = Object.assign([], this.state.addedAmountArray).filter((item, i) => i!==index);
+      //  const newAddedItemArray = Object.assign([], this.state.addedItemArray).filter(e => e!==item);
         const newItemArray = Object.assign([], this.state.itemArray).concat(item);
-        const newAddedAmountArray = Object.assign([], this.state.addedAmountArray).filter(e => e!==amount);
-        const newAmountArray = Object.assign([], this.state.amountArray).concat(amount);
 
-        console.log(newAddedItemArray);
+      const newAmountArray = Object.assign([], this.state.amountArray).concat(amount);
+
+
         this.setState ({
           addedItemArray : newAddedItemArray,
           itemArray: newItemArray,
           amountArray: newAmountArray,
-          addedAmountArray : newAddedAmountArray
+          addedAmountArray : newAddedAmountArray,
         })
-
       }
-
     }
 
   render() {
@@ -144,7 +131,9 @@ class App extends Component {
           itemArray={this.state.itemArray}
           amountArray = {this.state.amountArray}
           delete ={(index) => this.handleDelete(index, 'mainUl')}
-          check = {this.handleCheck}/>
+          //check = {this.handleCheck}
+          check = {(index, item, amount) => this.handleCheck(index, 'mainUl', item, amount)}
+  />
 
         <BodyData
           id="Added"
@@ -153,7 +142,9 @@ class App extends Component {
           itemArray={this.state.addedItemArray}
           amountArray = {this.state.addedAmountArray}
           delete = {(index) => this.handleDelete(index, 'mainAddedUl')}
-          check = {this.handleCheck}/>
+          //check = {this.handleCheck}
+          check = {(index, item, amount) => this.handleCheck(index, 'mainAddedUl', item, amount)}
+          />
 
         </div>
     );

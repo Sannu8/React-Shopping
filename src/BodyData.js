@@ -28,13 +28,15 @@ class BodyData extends Component {
             <strong>Quantity</strong>
           </li>
 
-          {this.props.itemArray.map((item,i) => <Line
+          {this.props.itemArray.map((item,i,amount) => <Line
                                                   itemName={item}
                                                   amount={this.props.amountArray[i]}
                                                   delete={() => this.props.delete(i)}
-                                                  check={this.props.check}
+                                                  check={() => this.props.check(i,item,this.props.amountArray[i])}
                                                   ulId = {this.props.ulId}
-                                                  key = {i}/>)}
+                                                  key = {i}
+                                                  checked = {this.props.checked}
+                                                  />)}
 
         </ul>
 

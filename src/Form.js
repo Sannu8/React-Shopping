@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import './Css/Form.css';
 
-import Line from './Line.js';
-import BodyData from './BodyData.js';
 
 class Form extends Component {
   constructor(props) {
@@ -12,6 +10,15 @@ class Form extends Component {
       item: '',
       quantity: ''
     }
+  }
+
+  submit = () => {
+    console.log(this.state.item, this.state.quantity);
+    this.props.onAdd(this.state.item, this.state.quantity);
+    this.setState({
+      item:'',
+      quantity: ''
+    })
   }
 
   render() {
@@ -44,7 +51,7 @@ class Form extends Component {
             onChange={(e) => this.setState({quantity: e.target.value})}/>
         </td>
         <td>
-        <input type="button" value={btnValue} id={btnValue} onClick={(e) => this.props.onAdd(this.state.item, this.state.quantity)}/>
+        <input type="button" value={btnValue} id={btnValue} onClick={(e) => this.submit(e)}/>
         </td>
 
         </tr>
