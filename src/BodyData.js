@@ -3,22 +3,12 @@ import './Css/BodyData.css';
 import Line from './Line.js';
 
 class BodyData extends Component {
-  constructor(props){
-    super(props);
-
-    this.state = {
-
-    }
-  }
 
   render() {
 
     return (
       <div id={this.props.id}>
         <h3>{this.props.title}</h3>
-
-
-
         <ul id= {this.props.ulId}>
 
           <li className = "heading">
@@ -35,7 +25,6 @@ class BodyData extends Component {
                                                   check={() => this.props.check(i,item,this.props.amountArray[i])}
                                                   ulId = {this.props.ulId}
                                                   key = {i}
-                                                  checked = {this.props.checked}
                                                   />)}
 
         </ul>

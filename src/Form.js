@@ -13,7 +13,6 @@ class Form extends Component {
   }
 
   submit = () => {
-    console.log(this.state.item, this.state.quantity);
     this.props.onAdd(this.state.item, this.state.quantity);
     this.setState({
       item:'',

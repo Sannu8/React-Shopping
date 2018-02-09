@@ -8,7 +8,6 @@ import BodyData from './BodyData.js';
 
 import logo from './Images/logo.png';
 
-
 class App extends Component {
 
   constructor(props){
@@ -19,7 +18,7 @@ class App extends Component {
       amountArray : ['2kg','1kg','1l','500g','2kg'],
       addedItemArray : [],
       addedAmountArray : [],
-    };
+  };
     this.handleAdd = this.handleAdd.bind(this);
   }
 
@@ -38,10 +37,8 @@ class App extends Component {
       }
 
       handleDelete = (index, id) => {
-        console.log('index: ' + index);
-        console.log('id: ' + id);
+        
         if (id === 'mainUl') {
-
 
           const newItemArray = Object.assign([], this.state.itemArray).filter((item, i) => i!==index);
           const newAmountArray = Object.assign([], this.state.amountArray).filter((item, i) => i!==index);
@@ -49,8 +46,7 @@ class App extends Component {
         this.setState({
           itemArray : newItemArray,
           amountArray : newAmountArray})
-
-      }
+        }
 
         else if (id === 'mainAddedUl') {
         const newAddedItemArray = Object.assign([], this.state.addedItemArray).filter((item, i) => i!==index);
@@ -65,20 +61,13 @@ class App extends Component {
       }
 
       handleCheck = (index, id, item, amount) => {
-        console.log('index: ' + index);
-        console.log('item: ' + item);
-        console.log('amount' + amount);
-        console.log('id' + id);
 
         if (id=== 'mainUl') {
 
           const newAddedItemArray = Object.assign([], this.state.addedItemArray).concat(item);
-        const newAddedAmountArray = Object.assign([], this.state.addedAmountArray).concat(amount);
-
-      //  const newItemArray = Object.assign([], this.state.itemArray).filter(e => e!==item);
-      //  const newAmountArray = Object.assign([], this.state.amountArray).filter(e => e!==amount);
-      const newItemArray = Object.assign([], this.state.itemArray).filter((item, i) => i!==index);
-      const newAmountArray = Object.assign([], this.state.amountArray).filter((item, i) => i!==index);
+          const newAddedAmountArray = Object.assign([], this.state.addedAmountArray).concat(amount);
+          const newItemArray = Object.assign([], this.state.itemArray).filter((item, i) => i!==index);
+          const newAmountArray = Object.assign([], this.state.amountArray).filter((item, i) => i!==index);
 
 
         this.setState ({
@@ -86,18 +75,17 @@ class App extends Component {
           addedAmountArray : newAddedAmountArray,
           itemArray: newItemArray,
           amountArray : newAmountArray,
+
         })
       }
 
       else if (id === 'mainAddedUl') {
 
-const newAddedItemArray = Object.assign([], this.state.addedItemArray).filter((item, i) => i!==index);
-  const newAddedAmountArray = Object.assign([], this.state.addedAmountArray).filter((item, i) => i!==index);
-      //  const newAddedItemArray = Object.assign([], this.state.addedItemArray).filter(e => e!==item);
+        const newAddedItemArray = Object.assign([], this.state.addedItemArray).filter((item, i) => i!==index);
+        const newAddedAmountArray = Object.assign([], this.state.addedAmountArray).filter((item, i) => i!==index);
+
         const newItemArray = Object.assign([], this.state.itemArray).concat(item);
-
-      const newAmountArray = Object.assign([], this.state.amountArray).concat(amount);
-
+        const newAmountArray = Object.assign([], this.state.amountArray).concat(amount);
 
         this.setState ({
           addedItemArray : newAddedItemArray,
@@ -131,7 +119,6 @@ const newAddedItemArray = Object.assign([], this.state.addedItemArray).filter((i
           itemArray={this.state.itemArray}
           amountArray = {this.state.amountArray}
           delete ={(index) => this.handleDelete(index, 'mainUl')}
-          //check = {this.handleCheck}
           check = {(index, item, amount) => this.handleCheck(index, 'mainUl', item, amount)}
   />
 
@@ -142,7 +129,6 @@ const newAddedItemArray = Object.assign([], this.state.addedItemArray).filter((i
           itemArray={this.state.addedItemArray}
           amountArray = {this.state.addedAmountArray}
           delete = {(index) => this.handleDelete(index, 'mainAddedUl')}
-          //check = {this.handleCheck}
           check = {(index, item, amount) => this.handleCheck(index, 'mainAddedUl', item, amount)}
           />
 
