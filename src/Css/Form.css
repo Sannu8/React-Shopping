@@ -1,0 +1,18 @@
+#item, #quantity {
+  height: 25px;
+  width: 200px;
+}
+
+#Add {
+  width: 125px;
+  height: 30px;
+  background-color: #994d00;
+  color: white;
+  font-size: 16px;
+  box-shadow: 2px 2px grey;
+}
+
+@media (max-width: 800px) {
+  #item, #quantity {width:120px;}
+  th {font-size: 20px;}
+}
