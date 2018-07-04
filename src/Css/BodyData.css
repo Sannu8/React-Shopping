@@ -12,10 +12,19 @@
   text-decoration: line-through;
 
 }
-
+/*Animation Code */
+@keyframes backgroundChange {
+  0% {background-color: #86b300}
+  25% {background-color: yellowgreen;}
+  50% {background-color: yellow}
+  75% {background-color: lightgoldenrodyellow}
+  100% {background-color: white}
+}
 ul.sub {
   margin-top: 2px;
   background-color:  #86b300;
+  animation-name: backgroundChange;
+  animation-duration: 10s;
   display: flex;
   color: #994d00;
 
